@@ -39,6 +39,7 @@ def rodadas():
 
 
 def jogando():
+
     jogador()
 
     for i in jogadores:
@@ -49,6 +50,8 @@ def jogando():
 
         rodadas()
         jogar = input('Tem mais alguma rodada? s(Sim) n(Não): ').lower()
+
+    print('O jogo acabou.')
 
 
 jogando()
