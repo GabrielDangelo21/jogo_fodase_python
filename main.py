@@ -1,54 +1,56 @@
 jogadores = []
 
 
-# Função para saber os nomes dos jogadores
+class Pessoa:
+    def __init__(self, nome, pontos=0):
+        self.nome = nome
+        self.pontos = pontos
 
 
-def jogador():
-    print('Bem vindo ao jogo')
-    sair = ''
-    while sair != 'n':
-        nome_jogador = input('Nome do jogador: ')
-        jogadores.append(nome_jogador)
-        sair = input('Tem mais jogador? s(Sim) n(Não)')
+# Adicionando dinâmicamente os jogadores
+cont = 0
+qtd_jogadores = int(input('Quantos jogadores? '))
+
+while cont < qtd_jogadores:
+    jogador = input('Qual o nome do jogador? ')
+    jogadores.append(Pessoa(jogador))
+    cont += 1
+
+# Conferindo se o jogador acertou
 
 
-# Função para somar pontuação
 def acertou():
-    pontos_ate_o_momento = 0
-    resposta = input('Acertou? s(Sim) n(Não): ').lower()
-    if resposta == 's':
-        pedidas = int(input('Quantas acertou?: '))
-        pontos = 5 + pedidas
-        total_pontos = pontos_ate_o_momento + int(pontos)
-        print(total_pontos)
+    cont = 0
+    while cont < qtd_jogadores:
+        pontos_ate_o_momento = jogadores[cont].pontos
+        print(jogadores[cont].nome)
+        resposta = input('Acertou? s(Sim) n(Não): ').lower()
+        if resposta == 's':
+            pedidas = int(input('Quantas acertou?: '))
+            pontos = 5 + pedidas
+            jogadores[cont].pontos = pontos_ate_o_momento + int(pontos)
+            print(
+                f'{jogadores[cont].nome} está com {jogadores[cont].pontos}'
+                ' pontos.')
+            cont += 1
+        elif resposta == 'n':
+            print(f'{jogadores[cont].nome} está com {jogadores[cont].pontos}'
+                  ' pontos.')
+            cont += 1
 
-
-def rodadas():
-    jogar = 's'
-    if jogar == 's':
-        print('Boa rodada a todos!')
-        for i in jogadores:
-            print(i)
-            acertou()
-
-    else:
-        print('O jogo acabou.')
-        # for i in jogadores:
-        #     print(f'{i} acabou com {pontos_iniciais}.')
+# Jogando
 
 
 def jogando():
 
-    jogador()
+    cont = 0
+    while cont < qtd_jogadores:
+        print(f'Olá {jogadores[cont].nome}, bem vindo ao jogo.')
+        cont += 1
 
-    for i in jogadores:
-        print(f'Olá {i}, bem vindo ao jogo.')
-
-    jogar = input('Tem mais alguma rodada? s(Sim) n(Não): ').lower()
+    jogar = 's'
     while jogar == 's':
-
-        rodadas()
+        acertou()
         jogar = input('Tem mais alguma rodada? s(Sim) n(Não): ').lower()
 
     print('O jogo acabou.')
