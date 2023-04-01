@@ -38,6 +38,15 @@ def acertou():
                   ' pontos.')
             cont += 1
 
+# Mostrando os pontos de cada jogador
+
+
+def mostraPontos():
+    cont = 0
+    while cont < qtd_jogadores:
+        print(f'{jogadores[cont].nome} {jogadores[cont].pontos} pontos.')
+        cont += 1
+
 # Jogando
 
 
@@ -51,9 +60,11 @@ def jogando():
     jogar = 's'
     while jogar == 's':
         acertou()
+        mostraPontos()
         jogar = input('Tem mais alguma rodada? s(Sim) n(Não): ').lower()
 
     print('O jogo acabou.')
+    mostraPontos()
 
 
 jogando()
