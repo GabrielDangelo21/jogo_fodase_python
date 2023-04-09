@@ -30,11 +30,11 @@ def acertou():
             pontos = 5 + pedidas
             jogadores[cont].pontos = pontos_ate_o_momento + int(pontos)
             print(
-                f'{jogadores[cont].nome} está com {jogadores[cont].pontos}'
+                f'{jogadores[cont].nome} fez {jogadores[cont].pontos}'
                 ' pontos.')
             cont += 1
         elif resposta == 'n':
-            print(f'{jogadores[cont].nome} está com {jogadores[cont].pontos}'
+            print(f'{jogadores[cont].nome} fez {jogadores[cont].pontos}'
                   ' pontos.')
             cont += 1
 
@@ -44,7 +44,9 @@ def acertou():
 def mostraPontos():
     cont = 0
     while cont < qtd_jogadores:
-        print(f'{jogadores[cont].nome} {jogadores[cont].pontos} pontos.')
+        print(
+            f'{jogadores[cont].nome} está com {jogadores[cont].pontos}'
+            ' pontos.')
         cont += 1
 
 # Jogando
